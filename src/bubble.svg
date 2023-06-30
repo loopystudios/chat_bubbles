@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 {{ width }} {{ height }}">
+    <!-- Fill -->
+    <path fill="{{ color }}"
+        d="M{{ start_x }},{{ start_y }}
+        h{{ fill_width }}
+        a{{ rounding }},{{ rounding }} 0 0 1 {{ rounding }},{{ rounding }}
+        v{{ fill_height }}
+        a{{ rounding }},{{ rounding }} 0 0 1 -{{ rounding }},{{ rounding }}
+        h-{{ fill_width }}
+        a{{ rounding }},{{ rounding }} 0 0 1 -{{ rounding }},-{{ rounding }}
+        v-{{ fill_height }}
+        a{{ rounding }},{{ rounding }} 0 0 1 {{ rounding }},-{{ rounding }} z"
+    />
+    <!-- Shark fin -->
+    <path fill="{{ color }}"
+        d="M{{ rounding }},{{ start_y + rounding * 2 + fill_height }}
+        h {{ fin_width }}
+        c 0,0 0,0 -{{ fin_width * 0.5 }},{{ fin_height }}
+        s -{{ fin_width * 0.5 }},10 -{{ fin_width * 0.5}},-10 z"
+    />
+    <!-- Highlight -->
+    <path stroke="{{ highlight_color }}" stroke-width="{{ highlight_width }}" stroke-linecap="round"
+        d="M0,{{ rounding * 1.5 }}
+        C0 {{ rounding * 0.5 }}, {{ rounding * 0.5 }} 0, {{ rounding * 1.5 }} 0"
+    />
+</svg>
