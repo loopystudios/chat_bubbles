@@ -12,7 +12,7 @@ const HIGHLIGHT_COLOR: &str = "#86e2ff";
 const SHARK_FIN_WIDTH: f32 = 35.0; // px
 
 /// How tall the shark fin is
-const SHARK_FIN_HEIGHT: f32 = 20.0; // px
+const SHARK_FIN_HEIGHT: f32 = 30.0; // px
 
 const HIGHLIGHT_WIDTH: f32 = 20.0; // px
 
