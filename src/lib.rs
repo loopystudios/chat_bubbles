@@ -22,7 +22,7 @@ const PADDING: f32 = 50.0; // px
 // Rounding needs to be smaller than padding
 const ROUNDING: f32 = 30.0; // px
 
-pub fn create(inner_width: f32, inner_height: f32) -> String {
+pub fn create(inner_width: f32, inner_height: f32) -> (String, f32, f32) {
     let width = PADDING.max(ROUNDING) * 2.0 + inner_width;
     let height = PADDING.max(ROUNDING) * 2.0 + inner_height;
 
@@ -48,7 +48,7 @@ pub fn create(inner_width: f32, inner_height: f32) -> String {
     context.insert("fin_width", &SHARK_FIN_WIDTH);
     context.insert("fin_height", &SHARK_FIN_HEIGHT);
 
-    tera.render("bubble.svg", &context).unwrap()
+    (tera.render("bubble.svg", &context).unwrap(), width, height)
 }
 
 #[cfg(test)]
