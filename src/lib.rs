@@ -8,6 +8,9 @@ const COLOR: &str = "#32c7f5";
 /// Highlight color of the text bubble
 const HIGHLIGHT_COLOR: &str = "#86e2ff";
 
+/// Opacity of the chat bubble
+const OPACITY: &str = "80%";
+
 /// How wide the shark fin is
 const SHARK_FIN_WIDTH: f32 = 35.0; // px
 
@@ -22,7 +25,17 @@ const PADDING: f32 = 30.0; // px
 // Rounding needs to be smaller than padding
 const ROUNDING: f32 = 30.0; // px
 
-pub fn create(inner_width: f32, inner_height: f32) -> (String, f32, f32) {
+pub struct ChatBubble {
+    /// The SVG contents
+    pub svg: String,
+    /// The width of the resulting viewbox
+    pub vb_width: f32,
+    /// The height of the resulting viewbox
+    pub vb_height: f32,
+}
+
+/// Create a chat bubble
+pub fn create(inner_width: f32, inner_height: f32) -> ChatBubble {
     let width = PADDING.max(ROUNDING) * 2.0 + inner_width;
     let height = PADDING.max(ROUNDING) * 2.0 + inner_height;
 
@@ -39,22 +52,37 @@ pub fn create(inner_width: f32, inner_height: f32) -> (String, f32, f32) {
     context.insert("height", &height);
     context.insert("highlight_color", HIGHLIGHT_COLOR);
     context.insert("color", COLOR);
-    context.insert("start_x", &ROUNDING);
-    context.insert("start_y", &0);
     context.insert("rounding", &ROUNDING.min(PADDING));
     context.insert("fill_width", &fill_width);
     context.insert("fill_height", &fill_height);
     context.insert("highlight_width", &HIGHLIGHT_WIDTH);
     context.insert("fin_width", &SHARK_FIN_WIDTH);
     context.insert("fin_height", &SHARK_FIN_HEIGHT);
+    context.insert("opacity", &OPACITY);
 
-    (tera.render("bubble.svg", &context).unwrap(), width, height)
+    let svg = tera.render("bubble.svg", &context).unwrap();
+    ChatBubble {
+        svg,
+        vb_width: width,
+        vb_height: height,
+    }
 }
 
 #[cfg(test)]
 #[test]
 pub fn test_is_svg() {
     use usvg::{Options, TreeParsing};
-    let svg = create(100.0, 50.0);
+    let ChatBubble { svg, .. } = create(100.0, 50.0);
+    assert!(usvg::Tree::from_str(&svg, &Options::default()).is_ok());
+}
+
+#[test]
+pub fn test_vb_size() {
+    use usvg::{Options, TreeParsing};
+    let ChatBubble {
+        svg,
+        vb_width: vbox_width,
+        vb_height,
+    } = create(100.0, 50.0);
     assert!(usvg::Tree::from_str(&svg, &Options::default()).is_ok());
 }

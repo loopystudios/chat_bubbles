@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 {{ width }} {{ height }}">
     <!-- Fill -->
-    <path fill="{{ color }}"
-        d="M{{ start_x }},{{ start_y }}
+    <path fill="{{ color }}" fill-opacity="{{ opacity }}"
+        d="M{{ rounding }},0
         h{{ fill_width }}
         a{{ rounding }},{{ rounding }} 0 0 1 {{ rounding }},{{ rounding }}
         v{{ fill_height }}
@@ -12,8 +12,8 @@
         a{{ rounding }},{{ rounding }} 0 0 1 {{ rounding }},-{{ rounding }} z"
     />
     <!-- Shark fin -->
-    <path fill="{{ color }}"
-        d="M{{ rounding }},{{ start_y + rounding * 2 + fill_height }}
+    <path fill="{{ color }}" fill-opacity="{{ opacity }}"
+        d="M{{ rounding }},{{ rounding * 2 + fill_height }}
         h {{ fin_width }}
         l -{{ fin_width * 0.8 }},{{ fin_height }} z"
     />
