@@ -17,7 +17,7 @@ const SHARK_FIN_HEIGHT: f32 = 30.0; // px
 const HIGHLIGHT_WIDTH: f32 = 20.0; // px
 
 // Empty space on all sides of the text
-const PADDING: f32 = 50.0; // px
+const PADDING: f32 = 30.0; // px
 
 // Rounding needs to be smaller than padding
 const ROUNDING: f32 = 30.0; // px
