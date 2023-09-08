@@ -13,9 +13,9 @@
     />
     <!-- Shark fin -->
     <path fill="{{ color }}" fill-opacity="{{ opacity }}"
-        d="M{{ rounding }},{{ rounding * 2 + fill_height }}
+        d="M{{ width * 0.5 - fin_width * 0.5 }},{{ rounding * 2 + fill_height }}
         h {{ fin_width }}
-        l -{{ fin_width * 0.8 }},{{ fin_height }} z"
+        l -{{ fin_width * 0.5 }},{{ fin_height }} z"
     />
     <!-- Highlight -->
     <path stroke="{{ highlight_color }}" stroke-width="{{ highlight_width }}" stroke-linecap="round"

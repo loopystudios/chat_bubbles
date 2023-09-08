@@ -1,6 +1,6 @@
 use tera::{Context, Tera};
 
-const SVG: &str = include_str!("bubble.svg");
+const SVG: &str = include_str!("bubble.svg.j2");
 
 /// Color of the text bubble
 const COLOR: &str = "#32c7f5";
@@ -36,6 +36,9 @@ pub struct ChatBubble {
 
 /// Create a chat bubble
 pub fn create(inner_width: f32, inner_height: f32) -> ChatBubble {
+    let inner_width = inner_width.max(SHARK_FIN_WIDTH);
+    let inner_height = inner_height.max(PADDING.max(ROUNDING));
+
     let width = PADDING.max(ROUNDING) * 2.0 + inner_width;
     let height = PADDING.max(ROUNDING) * 2.0 + inner_height;
 
@@ -44,7 +47,7 @@ pub fn create(inner_width: f32, inner_height: f32) -> ChatBubble {
 
     // Create template
     let mut tera = Tera::default();
-    tera.add_raw_template("bubble.svg", SVG).unwrap();
+    tera.add_raw_template("bubble", SVG).unwrap();
 
     let mut context = Context::new();
     // Put template values
@@ -60,7 +63,7 @@ pub fn create(inner_width: f32, inner_height: f32) -> ChatBubble {
     context.insert("fin_height", &SHARK_FIN_HEIGHT);
     context.insert("opacity", &OPACITY);
 
-    let svg = tera.render("bubble.svg", &context).unwrap();
+    let svg = tera.render("bubble", &context).unwrap();
     ChatBubble {
         svg,
         vb_width: width,
