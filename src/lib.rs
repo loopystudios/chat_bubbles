@@ -2,8 +2,11 @@ use tera::{Context, Tera};
 
 const SVG: &str = include_str!("bubble.svg.j2");
 
-/// Color of the text bubble
-const COLOR: &str = "#32c7f5";
+/// Top color of the text bubble gradient
+const COLOR1: &str = "#32c7f5";
+
+/// Bottom color of the text bubble gradient
+const COLOR2: &str = "#86e2ff";
 
 /// Highlight color of the text bubble
 const HIGHLIGHT_COLOR: &str = "#86e2ff";
@@ -57,7 +60,8 @@ pub fn create(inner_width: f32, inner_height: f32) -> ChatBubble {
     context.insert("width", &width);
     context.insert("height", &height);
     context.insert("highlight_color", HIGHLIGHT_COLOR);
-    context.insert("color", COLOR);
+    context.insert("color1", COLOR1);
+    context.insert("color2", COLOR2);
     context.insert("rounding", &ROUNDING.min(PADDING));
     context.insert("fill_width", &fill_width);
     context.insert("fill_height", &fill_height);

@@ -1,6 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 {{ width }} {{ height }}">
+    <defs>
+        <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+        <stop stop-color="{{ color1 }}" offset="0%" />
+        <stop stop-color="{{ color2 }}" offset="100%" />
+        </linearGradient>
+    </defs>
     <!-- Fill -->
-    <path fill="{{ color }}" fill-opacity="{{ opacity }}"
+    <path fill="url(#gradient)" fill-opacity="{{ opacity }}"
         d="M{{ rounding }},0
         h{{ fill_width }}
         a{{ rounding }},{{ rounding }} 0 0 1 {{ rounding }},{{ rounding }}
@@ -12,7 +18,7 @@
         a{{ rounding }},{{ rounding }} 0 0 1 {{ rounding }},-{{ rounding }} z"
     />
     <!-- Shark fin -->
-    <path fill="{{ color }}" fill-opacity="{{ opacity }}"
+    <path fill="{{ color2 }}" fill-opacity="{{ opacity }}"
         d="M{{ width * 0.5 - fin_width * 0.5 }},{{ rounding * 2 + fill_height }}
         h {{ fin_width }}
         l -{{ fin_width * 0.5 - fin_rounding * 0.5 }},{{ fin_height }}
