@@ -11,11 +11,14 @@ const HIGHLIGHT_COLOR: &str = "#86e2ff";
 /// Opacity of the chat bubble
 const OPACITY: &str = "80%";
 
+// How much rounding to apply to the shark fin
+const SHARK_FIN_ROUNDING: f32 = 5.0; //px
+
 /// How wide the shark fin is
 const SHARK_FIN_WIDTH: f32 = 35.0; // px
 
 /// How tall the shark fin is
-const SHARK_FIN_HEIGHT: f32 = 30.0; // px
+const SHARK_FIN_HEIGHT: f32 = 10.0; // px
 
 const HIGHLIGHT_WIDTH: f32 = 20.0; // px
 
@@ -61,6 +64,7 @@ pub fn create(inner_width: f32, inner_height: f32) -> ChatBubble {
     context.insert("highlight_width", &HIGHLIGHT_WIDTH);
     context.insert("fin_width", &SHARK_FIN_WIDTH);
     context.insert("fin_height", &SHARK_FIN_HEIGHT);
+    context.insert("fin_rounding", &SHARK_FIN_ROUNDING);
     context.insert("opacity", &OPACITY);
 
     let svg = tera.render("bubble", &context).unwrap();

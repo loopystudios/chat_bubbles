@@ -15,7 +15,8 @@
     <path fill="{{ color }}" fill-opacity="{{ opacity }}"
         d="M{{ width * 0.5 - fin_width * 0.5 }},{{ rounding * 2 + fill_height }}
         h {{ fin_width }}
-        l -{{ fin_width * 0.5 }},{{ fin_height }} z"
+        l -{{ fin_width * 0.5 - fin_rounding * 0.5 }},{{ fin_height }}
+        a -{{fin_rounding }},{{fin_rounding}} 0 0 1 -{{fin_rounding}},0 z"
     />
     <!-- Highlight -->
     <path stroke="{{ highlight_color }}" stroke-width="{{ highlight_width }}" stroke-linecap="round"
