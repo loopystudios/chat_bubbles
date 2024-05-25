@@ -1,6 +1,6 @@
 [package]
-name = "chat-bubbles"
-version = "0.2.0"
+name = "chat_bubbles"
+version = "0.3.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -8,5 +8,5 @@ edition = "2021"
 tera = { version = "1", default-features = false }
 
 [dev-dependencies]
-usvg = "0.35"
+usvg = "0.41"
 open = "5.0"

@@ -1,3 +1,4 @@
 test.svg
 /target
 /Cargo.lock
+.DS_Store

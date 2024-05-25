@@ -1,8 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 {{ width }} {{ height }}">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="{{ vb_x1 }} {{ vb_y1 }} {{ vb_x2 }} {{ vb_y2 }}">
     <defs>
-        <linearGradient id="gradient" x1="0" x2="0" y1="0%" y2="100%" gradientUnits="userSpaceOnUse">
+        <linearGradient id="gradient" x1="0" x2="0" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
         <stop stop-color="{{ color1 }}" offset="0%" />
         <stop stop-color="{{ color2 }}" offset="100%" />
+        </linearGradient>
+        <linearGradient id="fin_gradient" x1="0" x2="0" y1="0%" y2="80%" gradientUnits="objectBoundingBox">
+        <stop stop-color="{{ color2 }}" offset="0%" />
+        <stop stop-color="{{ color2 }}00" offset="100%" />
         </linearGradient>
     </defs>
     <!-- Fill -->
@@ -18,11 +22,11 @@
         a{{ rounding }},{{ rounding }} 0 0 1 {{ rounding }},-{{ rounding }} z"
     />
     <!-- Shark fin -->
-    <path fill="{{ color2 }}" fill-opacity="{{ opacity }}"
+    <path fill="url(#fin_gradient)" fill-opacity="{{ opacity }}"
         d="M{{ width * 0.5 - fin_width * 0.5 }},{{ rounding * 2 + fill_height }}
         h {{ fin_width }}
-        l -{{ fin_width * 0.5 - fin_rounding * 0.5 }},{{ fin_height }}
-        a -{{fin_rounding }},{{fin_rounding}} 0 0 1 -{{fin_rounding}},0 z"
+        l -{{ fin_width * 0.5}},{{ fin_height }}
+        l -{{ fin_width * 0.5}},-{{ fin_height }} z"
     />
     <!-- Highlight -->
     <path stroke="{{ highlight_color }}" stroke-width="{{ highlight_width }}" stroke-linecap="round"
