@@ -2,11 +2,11 @@
     <defs>
         <linearGradient id="gradient" x1="0" x2="0" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
         <stop stop-color="{{ color1 }}" offset="0%" />
-        <stop stop-color="{{ color2 }}" offset="100%" />
+        <stop stop-color="{{ color1 }}" offset="100%" />
         </linearGradient>
-        <linearGradient id="fin_gradient" x1="0" x2="0" y1="0%" y2="80%" gradientUnits="objectBoundingBox">
-        <stop stop-color="{{ color2 }}" offset="0%" />
-        <stop stop-color="{{ color2 }}00" offset="100%" />
+        <linearGradient id="fin_gradient" x1="0" x2="0" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+        <stop stop-color="{{ color1 }}" offset="0%" />
+        <stop stop-color="{{ color1 }}" offset="100%" />
         </linearGradient>
     </defs>
     <!-- Fill -->
@@ -27,10 +27,5 @@
         h {{ fin_width }}
         l -{{ fin_width * 0.5}},{{ fin_height }}
         l -{{ fin_width * 0.5}},-{{ fin_height }} z"
-    />
-    <!-- Highlight -->
-    <path stroke="{{ color2 }}" stroke-width="{{ highlight_width }}" stroke-linecap="round"
-        d="M0,{{ rounding * 1.5 }}
-        C0 {{ rounding * 0.5 }}, {{ rounding * 0.5 }} 0, {{ rounding * 1.5 }} 0"
     />
 </svg>
