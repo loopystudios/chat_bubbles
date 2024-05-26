@@ -2,15 +2,6 @@ use tera::{Context, Tera};
 
 const BUBBLE_SVG: &str = include_str!("bubble.svg.j2");
 
-/// Top color of the text bubble gradient
-const COLOR1: &str = "#32c7f5";
-
-/// Bottom color of the text bubble gradient
-const COLOR2: &str = "#86e2ff";
-
-/// Highlight color of the text bubble
-const STROKE_COLOR: &str = "#86e2ff";
-
 /// Opacity of the chat bubble
 const OPACITY: &str = "80%";
 
@@ -35,7 +26,7 @@ pub struct ChatBubble {
 }
 
 /// Create a chat bubble
-pub fn create(inner_width: f32, inner_height: f32) -> ChatBubble {
+pub fn create(inner_width: f32, inner_height: f32, color1: &str, color2: &str) -> ChatBubble {
     let inner_width = inner_width.max(SHARK_FIN_WIDTH);
     let inner_height = inner_height.max(PADDING.max(ROUNDING));
 
@@ -63,9 +54,8 @@ pub fn create(inner_width: f32, inner_height: f32) -> ChatBubble {
     context.insert("vb_y1", &vb_y1);
     context.insert("vb_x2", &vb_x2);
     context.insert("vb_y2", &vb_y2);
-    context.insert("highlight_color", STROKE_COLOR);
-    context.insert("color1", COLOR1);
-    context.insert("color2", COLOR2);
+    context.insert("color1", color1);
+    context.insert("color2", color2);
     context.insert("rounding", &ROUNDING.min(PADDING));
     context.insert("fill_width", &fill_width);
     context.insert("fill_height", &fill_height);
@@ -82,14 +72,17 @@ pub fn create(inner_width: f32, inner_height: f32) -> ChatBubble {
 mod tests {
     use crate::{create, ChatBubble};
 
+    const COLOR1: &str = "#32c7f5";
+    const COLOR2: &str = "#86e2ff";
+
     #[test]
     pub fn test_is_svg() {
-        let ChatBubble { svg, .. } = create(100.0, 50.0);
+        let ChatBubble { svg, .. } = create(100.0, 50.0, COLOR1, COLOR2);
         assert!(usvg::Tree::from_str(&svg, &usvg::Options::default(), &Default::default()).is_ok());
     }
     #[test]
     pub fn test_vb_size() {
-        let ChatBubble { svg, .. } = create(100.0, 50.0);
+        let ChatBubble { svg, .. } = create(100.0, 50.0, COLOR1, COLOR2);
         assert!(usvg::Tree::from_str(&svg, &usvg::Options::default(), &Default::default()).is_ok());
     }
 }
